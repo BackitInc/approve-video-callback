@@ -1,6 +1,6 @@
 exports.handler = async (event, context) => {
     console.log(event);
-    const request = JSON.parse(event.body);
+    //const request = JSON.parse(event.body);
 
     if (request.challenge) {
         return {
@@ -10,6 +10,6 @@ exports.handler = async (event, context) => {
     }
     return {
         statusCode: 200,
-        body: "hello world"
+        body: event
     }
 }
