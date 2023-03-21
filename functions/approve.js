@@ -8,11 +8,15 @@ exports.handler = async (event, context) => {
             })
         }
     }
+
+    if(event?.body?.payload) {
+        const decoded = encodeURI(event.body.payload);
+    }
     return {
         statusCode: 200,
-        body: JSON.stringify({
-            body: event.body,
-            params: event.queryStringParameters,
-        })
+        // body: JSON.stringify({
+        //     body: event.body,
+        //     params: event.queryStringParameters,
+        // })
     }
 }
