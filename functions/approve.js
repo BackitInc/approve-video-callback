@@ -1,12 +1,11 @@
 exports.handler = async (event, context) => {
     console.log(event);
-    let request = {};
-
-
-    if (request.challenge) {
+    if (event?.body?.challenge) {
         return {
             statusCode: 200,
-            body: request.challenge
+            body: JSON.stringify({
+                challenge: event.body.challenge,
+            })
         }
     }
     return {
