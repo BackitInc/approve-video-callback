@@ -1,3 +1,5 @@
+const querystring = require('querystring');
+
 exports.handler = async (event, context) => {
     console.log(event);
     if (event?.body?.challenge) {
@@ -10,8 +12,7 @@ exports.handler = async (event, context) => {
     }
 
     if(event.body && /^payload=+/.test(event.body)) {
-        const decoded = decodeURI(event.body.replace('payload=', ''));
-        const payload = JSON.parse(decoded);
+        const payload = JSON.parse(querystring.parse(event.body).payload)
         const date = new Date();
         return {
             statusCode: 200,
