@@ -11,9 +11,9 @@ exports.handler = async (event, context) => {
     }
     return {
         statusCode: 200,
-        body: {
+        body: JSON.stringify({
             body: event.body,
             params: event.queryStringParameters,
-        }
+        })
     }
 }
