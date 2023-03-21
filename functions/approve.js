@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
     }
 
     if(event.body && /^payload=+/.test(event.body)) {
-        const decoded = decodeURI(event.body.payload.replace('payload=', ''));
+        const decoded = decodeURI(event.body.replace('payload=', ''));
         const payload = JSON.parse(decoded);
         const date = new Date();
         return {
