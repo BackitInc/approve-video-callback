@@ -24,6 +24,7 @@ exports.handler = async (event, context) => {
         });
         console.log('Finished posting');
         const message = Object.assign(payload.message, {
+            replace_original = 'true',
             blocks: [
                 payload.message.blocks[0],
                 payload.message.blocks[1],
@@ -52,12 +53,10 @@ exports.handler = async (event, context) => {
         console.log('The URL');
         console.log(payload.response_url);
         console.log('The Payload');
-        message.replace_original = 'true';
         console.log(message);
         console.log('JSON STRINGIFYING');
-
-        console.log(JSON.stringify(moo));
-        await axios.post(payload.response_url, moo);
+        console.log(JSON.stringify(message));
+        await axios.post(payload.response_url, message);
     }
     return {
         statusCode: 200,
