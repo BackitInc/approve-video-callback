@@ -42,8 +42,9 @@ exports.handler = async (event, context) => {
         message.replace_original = 'true';
         console.log(message);
         console.log('JSON STRINGIFYING');
-        console.log(JSON.stringify(message));
-        await axios.post(payload.response_url, message);
+        const moo = Object.assign({}, message);
+        console.log(JSON.stringify(moo));
+        await axios.post(payload.response_url, moo);
     }
     return {
         statusCode: 200,
