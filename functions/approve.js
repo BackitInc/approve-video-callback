@@ -28,14 +28,19 @@ exports.handler = async (event, context) => {
             blocks: [
                 payload.message.blocks[0],
                 payload.message.blocks[1],
+                {
+                    type: 'section',
+                    block_id: payload.message.blocks[2].block_id,
+                    text: {
+                        type: 'text',
+                        test: 'Video Approved',
+                        verbatim: false
+                    }
+                },
                 // {
                 //     type: 'mrkdwn',
-                //     text: '*Video Approved*'
-                // },
-                {
-                    type: 'mrkdwn',
-                    text: `:white_check_mark: ${payload.user.name} approved this video on ${DateTime.now().toLocaleString(DateTime.DATETIME_FULL)}`
-                }
+                //     text: `:white_check_mark: ${payload.user.name} approved this video on ${DateTime.now().toLocaleString(DateTime.DATETIME_FULL)}`
+                // }
             ]
         });
         console.log('The message');
