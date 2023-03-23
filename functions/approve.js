@@ -17,13 +17,6 @@ exports.handler = async (event, context) => {
     if(event.body && /^payload=+/.test(event.body)) {
         const payload = JSON.parse(querystring.parse(event.body).payload);
         const action = JSON.parse(payload.actions[0].value);
-        console.log(action);
-        console.log(payload);
-        await axios.post(action.url, {
-            file: action.file,
-            hash: action.hash,
-        });
-        console.log('Finished posting');
         const message = Object.assign(payload.message, {
             replace_original: 'true',
             blocks: [
@@ -43,6 +36,15 @@ exports.handler = async (event, context) => {
                 // }
             ]
         });
+
+        console.log(action);
+        console.log(payload);
+        await axios.post(action.url, {
+            file: action.file,
+            hash: action.hash,
+        });
+        console.log('Finished posting');
+
         console.log('The message');
         console.log(message);
         // message.blocks[2] = {
