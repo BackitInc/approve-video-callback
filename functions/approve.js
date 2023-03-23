@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
             hash: action.hash,
         });
         console.log('Finished posting');
-        const message = payload.message;
+        const message = Object.assign({}, payload.message);
         console.log('The message');
         console.log(message);
         message.blocks[2] = {
@@ -42,7 +42,7 @@ exports.handler = async (event, context) => {
         message.replace_original = 'true';
         console.log(message);
         console.log('JSON STRINGIFYING');
-        const moo = Object.assign({}, message);
+
         console.log(JSON.stringify(moo));
         await axios.post(payload.response_url, moo);
     }
