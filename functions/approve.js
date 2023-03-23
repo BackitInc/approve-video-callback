@@ -22,6 +22,7 @@ exports.handler = async (event, context) => {
             file: action.file,
             hash: action.hash,
         });
+        console.log('Finished posting');
         const message = payload.message;
         message.blocks[2] = {
             type: 'mrkdwn',
