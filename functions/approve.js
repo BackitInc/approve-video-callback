@@ -32,7 +32,9 @@ exports.handler = async (event, context) => {
             type: 'mrkdwn',
             text: `:white_check_mark: ${payload.user.name} approved this video on ${DateTime.now().toLocaleString(DateTime.DATETIME_FULL)}`
         };
+        console.log('The URL');
         console.log(payload.response_url);
+        console.log('The Payload');
         console.log(JSON.stringify({
             replace_original: 'true',
             ...message,
