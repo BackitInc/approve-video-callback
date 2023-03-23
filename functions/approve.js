@@ -24,7 +24,7 @@ exports.handler = async (event, context) => {
         });
         console.log('Finished posting');
         const message = Object.assign(payload.message, {
-            replace_original = 'true',
+            replace_original: 'true',
             blocks: [
                 payload.message.blocks[0],
                 payload.message.blocks[1],
