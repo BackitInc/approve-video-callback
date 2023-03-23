@@ -31,7 +31,10 @@ exports.handler = async (event, context) => {
             type: 'mrkdwn',
             text: `:white_check_mark: ${payload.user.name} approved this video on ${DateTime.now().toLocaleString(DateTime.DATETIME_FULL)}`
         };
-        await axios.post(payload.response_url, message);
+        await axios.post(payload.response_url, {
+            replace_original: 'true',
+            ...message,
+        });
     }
     return {
         statusCode: 200,
