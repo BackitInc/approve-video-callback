@@ -16,7 +16,8 @@ exports.handler = async (event, context) => {
     if(event.body && /^payload=+/.test(event.body)) {
         const payload = JSON.parse(querystring.parse(event.body).payload);
         const action = JSON.parse(payload.actions[0].value);
-        console.log(action)
+        console.log(action);
+        console.log(payload);
         await axios.post(action.url, {
             file: action.file,
             hash: action.hash,
