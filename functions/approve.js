@@ -32,6 +32,11 @@ exports.handler = async (event, context) => {
             type: 'mrkdwn',
             text: `:white_check_mark: ${payload.user.name} approved this video on ${DateTime.now().toLocaleString(DateTime.DATETIME_FULL)}`
         };
+        console.log(payload.response_url);
+        console.log(JSON.stringify({
+            replace_original: 'true',
+            ...message,
+        }));
         await axios.post(payload.response_url, {
             replace_original: 'true',
             ...message,
