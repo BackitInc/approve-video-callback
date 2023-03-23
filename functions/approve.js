@@ -26,10 +26,10 @@ exports.handler = async (event, context) => {
         const message = payload.message;
         console.log('The message');
         console.log(message);
-        // message.blocks[2] = {
-        //     type: 'mrkdwn',
-        //     text: '*Video Approved*'
-        // };
+        message.blocks[2] = {
+            type: 'mrkdwn',
+            text: '*Video Approved*'
+        };
         // message.blocks[3] = {
         //     type: 'mrkdwn',
         //     text: `:white_check_mark: ${payload.user.name} approved this video on ${DateTime.now().toLocaleString(DateTime.DATETIME_FULL)}`
