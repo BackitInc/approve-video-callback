@@ -1,7 +1,6 @@
 const querystring = require('querystring');
 const axios = require('axios');
 const { DateTime } = require('luxon');
-const safeJsonStringify = require('safe-json-stringify');
 
 exports.handler = async (event, context) => {
     console.log(event);
@@ -36,17 +35,15 @@ exports.handler = async (event, context) => {
                 // }
             ]
         });
-
+        console.log('ACTION');
         console.log(action);
+        console.log('PAYLOAD');
         console.log(payload);
-        await axios.post(action.url, {
-            file: action.file,
-            hash: action.hash,
-        });
+        // await axios.post(action.url, {
+        //     file: action.file,
+        //     hash: action.hash,
+        // });
         console.log('Finished posting');
-
-        console.log('The message');
-        console.log(message);
         // message.blocks[2] = {
         //     type: 'mrkdwn',
         //     text: '*Video Approved*'
@@ -55,15 +52,13 @@ exports.handler = async (event, context) => {
         //     type: 'mrkdwn',
         //     text: `:white_check_mark: ${payload.user.name} approved this video on ${DateTime.now().toLocaleString(DateTime.DATETIME_FULL)}`
         // };
+        console.log('Unmodified message');
+        console.log(JSON.stringify(payload.message));
         console.log('Message modified');
         console.log(message);
-        console.log('The URL');
-        console.log(payload.response_url);
-        console.log('The Payload');
-        console.log(message);
         console.log('JSON STRINGIFYING');
-        console.log(safeJsonStringify(message));
-        await axios.post(payload.response_url, message);
+        console.log(JSON.stringify(message));
+        //await axios.post(payload.response_url, message);
     }
     return {
         statusCode: 200,
