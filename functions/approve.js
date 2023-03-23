@@ -25,8 +25,8 @@ exports.handler = async (event, context) => {
         console.log('Finished posting');
         const message = Object.assign(payload.message, {
             blocks: [
-                ...payload.message.blocks[0],
-                ...payload.message.blocks[1],
+                payload.message.blocks[0],
+                payload.message.blocks[1],
                 {
                     type: 'mrkdwn',
                     text: '*Video Approved*'
