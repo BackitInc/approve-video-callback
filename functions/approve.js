@@ -1,6 +1,7 @@
 const querystring = require('querystring');
 const axios = require('axios');
 const { DateTime } = require('luxon');
+const safeJsonStringify = require('safe-json-stringify');
 
 exports.handler = async (event, context) => {
     console.log(event);
@@ -59,7 +60,7 @@ exports.handler = async (event, context) => {
         console.log('The Payload');
         console.log(message);
         console.log('JSON STRINGIFYING');
-        console.log(JSON.stringify(message));
+        console.log(safeJsonStringify(message));
         await axios.post(payload.response_url, message);
     }
     return {
