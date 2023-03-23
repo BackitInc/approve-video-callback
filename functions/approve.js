@@ -39,14 +39,13 @@ exports.handler = async (event, context) => {
         console.log('The URL');
         console.log(payload.response_url);
         console.log('The Payload');
+        message.replace_original = 'true';
+        console.log(message);
         console.log(JSON.stringify({
             replace_original: 'true',
             ...message,
         }));
-        await axios.post(payload.response_url, {
-            replace_original: 'true',
-            ...message,
-        });
+        await axios.post(payload.response_url, message);
     }
     return {
         statusCode: 200,
