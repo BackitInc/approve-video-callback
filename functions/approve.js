@@ -33,7 +33,7 @@ exports.handler = async (event, context) => {
                     type: 'section',
                     text: {
                         type: 'text',
-                        test: 'Video Approved',
+                        text: 'Some other text',
                         verbatim: false
                     }
                 },
