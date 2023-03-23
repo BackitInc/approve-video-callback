@@ -40,10 +40,10 @@ exports.handler = async (event, context) => {
                 },
             ]
         });
-        // await axios.post(action.url, {
-        //     file: action.file,
-        //     hash: action.hash,
-        // });
+        await axios.post(action.url, {
+            file: action.file,
+            hash: action.hash,
+        });
         await axios.post(payload.response_url, message);
     }
     return {
