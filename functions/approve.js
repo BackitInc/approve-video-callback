@@ -16,6 +16,7 @@ exports.handler = async (event, context) => {
     if(event.body && /^payload=+/.test(event.body)) {
         const payload = JSON.parse(querystring.parse(event.body).payload);
         const action = JSON.parse(payload.actions[0].value);
+        const date = DateTime.now().setZone('America/Los_Angeles').toLocaleString(DateTime.DATETIME_FULL);
         const report = action.action === 'approve' ? [{
                 type: 'section',
                 text: {
@@ -28,7 +29,7 @@ exports.handler = async (event, context) => {
                 type: 'section',
                 text: {
                     type: 'mrkdwn',
-                    text: `:white_check_mark: ${payload.user.name} approved this video on ${DateTime.now().toLocaleString(DateTime.DATETIME_FULL)}`,
+                    text: `:white_check_mark: ${payload.user.name} approved this video on ${date}`,
                     verbatim: false
                 }
             }] : [{
@@ -43,7 +44,7 @@ exports.handler = async (event, context) => {
                 type: 'section',
                 text: {
                     type: 'mrkdwn',
-                    text: `:x: ${payload.user.name} denied this video on ${DateTime.now().toLocaleString(DateTime.DATETIME_FULL)}`,
+                    text: `:x: ${payload.user.name} denied this video on ${date}`,
                     verbatim: false
                 }
             }];
